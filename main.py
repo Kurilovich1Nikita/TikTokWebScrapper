@@ -54,9 +54,9 @@ class TikTokBot():
 
 	def retrieve_user_data(self):
 		url = self.capture_token_signature()
-		print(url)
 
 		self.driver.get(url)
+		
 
 		data_ar = []
 
