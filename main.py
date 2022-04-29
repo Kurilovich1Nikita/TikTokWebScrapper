@@ -26,12 +26,18 @@ class TikTokBot():
 			except FileExistsError:
 				i += 1
 
+	#def save_data(self, data_ar):
+		#with open(f'{self.username}_profile_data.txt','w') as f:
+			#for i in data_ar:
+				#f.write(i)
+				#f.write('\n')
+		#print(f"Profile data saved to {os.getcwd()}")
+
 	def save_data(self, data_ar):
-		with open(f'{self.username}_profile_data.txt','w') as f:
-			for i in data_ar:
-				f.write(i)
-				f.write('\n')
+		with open(f'{self.username}_profile_data.json','w') as f:
+			json.dump(data_ar, f, ensure_ascii = False, indent = 4)
 		print(f"Profile data saved to {os.getcwd()}")
+
 
 	def capture_token_signature(self):
 		caps = DesiredCapabilities.CHROME
@@ -55,8 +61,7 @@ class TikTokBot():
 	def retrieve_user_data(self):
 		url = self.capture_token_signature()
 
-		self.driver.get(url)
-		
+		self.driver.get(url)	
 
 		data_ar = []
 
@@ -99,7 +104,6 @@ class TikTokBot():
 
 		self.create_dir()
 		self.save_data(data_ar)
-
 		self.driver.quit()
 
 def arg_parse():
