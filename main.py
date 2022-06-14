@@ -26,13 +26,6 @@ class TikTokBot():
 			except FileExistsError:
 				i += 1
 
-	#def save_data(self, data_ar):
-		#with open(f'{self.username}_profile_data.txt','w') as f:
-			#for i in data_ar:
-				#f.write(i)
-				#f.write('\n')
-		#print(f"Profile data saved to {os.getcwd()}")
-
 	def save_data(self, data_ar):
 		with open(f'{self.username}_profile_data.json','w') as f:
 			json.dump(data_ar, f, ensure_ascii = False, indent = 4)
